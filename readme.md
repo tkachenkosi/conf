@@ -2,16 +2,15 @@
 
 Пример испоьзования:
 
-[postgres]
-host=192.168.1.2
-port=5432
-db=books
-conns=5
-user=user1
+    [postgres]
+    host=192.168.1.2
+    port=5432
+    db=books
+    conns=5
 
 
     c := struct {
-    Host  string
+        Host  string
  	Db    string
  	Conns int
     }{}
