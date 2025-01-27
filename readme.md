@@ -2,6 +2,14 @@
 
 Пример испоьзования:
 
+[postgres]
+host=192.168.1.2
+port=5432
+db=books
+conns=5
+user=user1
+
+
     c := struct {
     Host  string
  	Db    string
