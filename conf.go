@@ -16,7 +16,7 @@ type conf struct {
 	key      string
 	value    string
 	result   map[string]string
-	err      error
+	// err      error
 }
 
 func NewConf(fileName string) (*conf, error) {
@@ -35,7 +35,7 @@ func (c *conf) Read(secName string, s any) error {
 	c.secName = secName
 
 	if err := c.parser(); err == nil {
-		fmt.Println("read", c.secName)
+		// fmt.Println("read", c.secName)
 		// Получаем значение структуры через рефлексию
 		val := reflect.ValueOf(s).Elem()
 		typ := val.Type()
