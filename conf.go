@@ -32,6 +32,7 @@ func NewConf(fileName string) (*conf, error) {
 
 // exempl: Read("[main]", &s)
 func (c *conf) Read(secName string, s any) error {
+	const msg_text = "ошибка преобразования значения для поля"
 	c.secName = secName
 
 	if err := c.parser(); err == nil {
@@ -54,19 +55,19 @@ func (c *conf) Read(secName string, s any) error {
 				case reflect.Int:
 					intValue, err := strconv.Atoi(mapValue)
 					if err != nil {
-						return fmt.Errorf("ошибка преобразования значения для поля %s: %v", fieldName, err)
+						return fmt.Errorf("%s %s: %v", msg_text, fieldName, err)
 					}
 					field.SetInt(int64(intValue))
 				case reflect.Bool:
 					boolValue, err := strconv.ParseBool(mapValue)
 					if err != nil {
-						return fmt.Errorf("ошибка преобразования значения для поля %s: %v", fieldName, err)
+						return fmt.Errorf("%s %s: %v", msg_text, fieldName, err)
 					}
 					field.SetBool(boolValue)
 				case reflect.Float64:
 					floatValue, err := strconv.ParseFloat(mapValue, 64)
 					if err != nil {
-						return fmt.Errorf("ошибка преобразования значения для поля %s: %v", fieldName, err)
+						return fmt.Errorf("%s %s: %v", msg_text, fieldName, err)
 					}
 					field.SetFloat(floatValue)
 				default:
